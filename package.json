@@ -1,0 +1,19 @@
+{
+  "name": "projmanagement",
+  "version": "1.0.0",
+  "description": "project management application for beginners",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "backend",
+    "API",
+    "creation"
+  ],
+  "author": "sushanth kasi",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
