@@ -2,6 +2,7 @@ import mongoose, {Schema} from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
+import 'dotenv/config'; // loads .env into process.env
 
 const userSchema = new Schema(
   {
@@ -81,6 +82,7 @@ userSchema.methods.isPasswordCorrect = async function(password){
 
 //generate access token
 userSchema.methods.generateAccessToken = function(){
+  console.log("Generating access token");
   return jwt.sign(
     {
       _id: this._id,
@@ -94,6 +96,7 @@ userSchema.methods.generateAccessToken = function(){
 
 // generate refresh token, refersh token usually doesnt need much payload
 userSchema.methods.generateRefreshToken = function(){
+  console.log("Generating refresh token");
   return jwt.sign(
     {
       _id: this._id
@@ -114,5 +117,5 @@ userSchema.methods.generateTempToken = function(){
   const tokenExpiry = Date.now() + (20*60*1000) //20 mins
   return {unhashToken, hashToken, tokenExpiry};
 
-}
-export const user = mongoose.model("User", userSchema); // exporting it so later we can use it whereever we want to.
+} 
+export const User = mongoose.model("User", userSchema); // exporting it so later we can use it whereever we want to.

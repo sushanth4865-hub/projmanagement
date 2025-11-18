@@ -1,5 +1,7 @@
 import Mailgen from "mailgen";
 import nodemailer from "nodemailer"
+import 'dotenv/config'; // loads .env into process.env
+
 
 const sendEmail = async(options) => {
   const mailGenerator = new Mailgen({
@@ -22,6 +24,17 @@ const sendEmail = async(options) => {
       pass: process.env.MAILTRAP_SMTP_PASS
     }
   })
+
+  // const transporter = nodemailer.createTransport({
+  //   host: 'sandbox.smtp.mailtrap.io',
+  //   port: 2525,
+  //   secure: false,
+  //   authMethod: 'LOGIN',
+  //   auth: {
+  //     user: '062125ea495162',
+  //     pass: '6178bc9b653886'
+  //   }
+  // })
 
   const mail = {
     from: "mail.taskmanager@example.com",
